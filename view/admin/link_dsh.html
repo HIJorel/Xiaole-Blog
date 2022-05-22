@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+	<title>#{title}</title>
+</head>
+<body>
+<div class="header container-fluid">
+    <div class="header_menu">
+    	
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="content">
+	    <div class="content_left col-lg-2">
+			<div class="logo">小乐博客后台管理</div>
+			<div class="content_left_menu">
+				<ul>
+				    <li class="content_left_Fmenu">
+						<a href="/admin">首页</a>
+					</li>
+					<li class="content_left_Fmenu">
+						<div>文章管理</div>
+						<ul>
+							<li><a href="/admin/article/add">文章发布</a></li>
+							<li><a href="/admin/article/all">全部文章</a></li>
+							<li><a href="/admin/article/category">文章分类</a></li>
+						</ul>
+					</li>
+					<li class="content_left_Fmenu">
+						<div>留言管理</div>
+						<ul>
+							<li><a href="/admin/liuyan/all">全部留言</a></li>
+	
+						</ul>
+					</li>
+					<li class="content_left_Fmenu">
+						<div>友链管理</div>
+						<ul>
+							<li><a href="/admin/link/dsh">待审核友链</a></li>
+							<li><a href="/admin/link/add">添加友链</a></li>
+							<li><a href="/admin/link/all">全部友链</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>	
+    </div>
+	<div class="content_right col-lg-10 table-responsive">
+	    <table class="table table-hover">
+	        <thead align="center">
+	        	<tr>
+	        	    <td>id</td>
+	        		<td>链接名称</td>
+	        		<td>链接描述</td>
+	        		<td>链接地址</td>
+	        		<td>申请时间</td>
+	        		<td>操作</td>
+	        	</tr>
+	        </thead>
+		    <tbody  align="center">
+		    	{#each list as v,k}
+   			        <tr data-id=#{v._id}>
+	   			        <td>#{Number(k)+1}</td>
+		        		<td>#{v.name}</td>
+		        		<td>#{v.description}</td>
+		        		<td>#{v.url}</td>
+		        		<td>#{v.time}</td>
+		        		<td>
+		        			<a href="/admin/link/state?id=#{v._id}&state=yes">通过</a>
+		        			<a href="/admin/link/state?id=#{v._id}&state=no">不通过</a>
+		        		</td>
+	        		</tr>
+   			    {#/each}
+		    </tbody>
+		</table>
+		<div>
+			<ul class="pagination">
+				##{pageTemp}
+			</ul>
+		</div>	
+	</div>
+</div>
+<div class="footer"></div>	
+</body>
+</html>
